@@ -1,0 +1,35 @@
+# Ignorar archivos específicos del sistema operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignorar archivos de IDE y editores
+.idea/
+.vscode/
+*.sublime-*
+*.swp
+*.swo
+*~
+
+# Archivos de compilación generales
+*.class
+*.log
+target/
+bin/
+out/
+
+# NO ignorar archivos JAR (mantenerlos en el repositorio)
+!*.jar
+
+# Ignorar archivos de configuración local
+*.env
+*.properties.local
+application-local.properties
+application-local.yml
+
+# Ignorar archivos de dependencias
+node_modules/ 
