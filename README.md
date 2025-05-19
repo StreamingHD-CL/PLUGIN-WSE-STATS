@@ -73,6 +73,28 @@ MODULE-WSE-STATS/
    jar cfv MetricaSHD.jar -C build .
    ```
 
+   ### macOS / Homebrew: usando un JDK 11 paralelo
+
+   Si tu `javac` por defecto es 1.8 (habitual en macOS) y ya tienes instalado **OpenJDK 11** mediante *Homebrew*, puedes compilar indicando la ruta explícita:
+
+   ```bash
+   # Asumiendo que lo instalaste con:
+   #   brew install openjdk@11
+
+   export JAVA11="/opt/homebrew/opt/openjdk@11"
+   mkdir -p build
+   "$JAVA11/bin/javac" -classpath "lib/*" -d build $(find src -name '*.java')
+   "$JAVA11/bin/jar" cfv MetricaSHD.jar -C build .
+   ```
+
+   Comprueba la versión:
+
+   ```bash
+   "$JAVA11/bin/java" -version  # Debe mostrar 11.x
+   ```
+
+   De esta forma evitas el error de incompatibilidad de versión de clase al usar un JDK 8.
+
    Se generará el archivo `MetricaSHD.jar` listo para desplegar.
 
 ---
