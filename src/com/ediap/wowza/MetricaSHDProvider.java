@@ -59,6 +59,18 @@ public class MetricaSHDProvider extends HTTPProvider2Base {
 
                             JsonObject instJson = new JsonObject();
                             instJson.addProperty("name", instName);
+                            // DETERMINAR SI LA INSTANCIA ESTA RECIBIENDO SEÑAL (INCOMING STREAMS)
+                            boolean hasIncomingStreams = false;
+                            try {
+                                // Una instancia se considera "Online" si existe al menos un stream publicado desde un encoder
+                                // getPublishStreamNames() devuelve la lista de nombres de streams actualmente publicados.
+                                List<?> published = appInst.getPublishStreamNames();
+                                hasIncomingStreams = (published != null && !published.isEmpty());
+                            } catch (Exception ignored) {
+                                // API no disponible en esta versión; consideramos Offline
+                                hasIncomingStreams = false;
+                            }
+                            instJson.addProperty("status", hasIncomingStreams ? "Online" : "Offline");
                             JsonArray viewersArr = new JsonArray();
 
                             // Obtenemos todas las sesiones HTTP (HLS)

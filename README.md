@@ -20,6 +20,7 @@ La respuesta se entrega en formato **JSON** idéntico al siguiente ejemplo:
       "instances": [
         {
           "name": "_definst_",
+          "status": "Online",
           "viewerCount": 5,
           "viewers": [
             {
@@ -31,6 +32,12 @@ La respuesta se entrega en formato **JSON** idéntico al siguiente ejemplo:
               "userAgent": "VLC/3.0.20 LibVLC/3.0.20"
             }
           ]
+        },
+        {
+          "name": "backup",
+          "status": "Offline",
+          "viewerCount": 0,
+          "viewers": []
         }
       ]
     }
