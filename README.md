@@ -7,6 +7,7 @@ El endpoint devuelve en tiempo real las métricas de todas las aplicaciones e in
 
 * Total de visualizadores HLS conectados.
 * Número de visualizadores por aplicación e instancia.
+* Estado de cada instancia (Online/Offline) y lista de streams activos.
 * Dirección IP y **User-Agent** de cada espectador.
 
 La respuesta se entrega en formato **JSON** idéntico al siguiente ejemplo:
@@ -21,6 +22,10 @@ La respuesta se entrega en formato **JSON** idéntico al siguiente ejemplo:
         {
           "name": "_definst_",
           "status": "Online",
+          "incomingStreams": [
+            "stream1",
+            "multibitrate_720p"
+          ],
           "viewerCount": 5,
           "viewers": [
             {
@@ -36,6 +41,7 @@ La respuesta se entrega en formato **JSON** idéntico al siguiente ejemplo:
         {
           "name": "backup",
           "status": "Offline",
+          "incomingStreams": [],
           "viewerCount": 0,
           "viewers": []
         }

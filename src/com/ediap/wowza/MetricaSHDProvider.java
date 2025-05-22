@@ -71,6 +71,22 @@ public class MetricaSHDProvider extends HTTPProvider2Base {
                                 hasIncomingStreams = false;
                             }
                             instJson.addProperty("status", hasIncomingStreams ? "Online" : "Offline");
+                            
+                            // Añadir lista de streams de entrada (Incoming Streams)
+                            JsonArray streamsArr = new JsonArray();
+                            try {
+                                List<?> published = appInst.getPublishStreamNames();
+                                if (published != null && !published.isEmpty()) {
+                                    for (Object streamNameObj : published) {
+                                        String streamName = String.valueOf(streamNameObj);
+                                        streamsArr.add(streamName);
+                                    }
+                                }
+                            } catch (Exception ignored) {
+                                // API no disponible en esta versión
+                            }
+                            instJson.add("incomingStreams", streamsArr);
+                            
                             JsonArray viewersArr = new JsonArray();
 
                             // Obtenemos todas las sesiones HTTP (HLS)
