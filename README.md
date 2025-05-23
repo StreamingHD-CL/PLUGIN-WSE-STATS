@@ -118,12 +118,12 @@ MODULE-WSE-STATS/
 2. Edita el archivo `conf/VHost.xml` y registra el *HTTPProvider* en la sección `<HTTPProviders>` del **HostPort** que usa el puerto 8086, añadiendo la siguiente línea **antes** de la entrada `HTTPServerVersion`:
 
    ```xml
-   <HTTPProvider>
-     <BaseClass>com.ediap.wowza.MetricaSHDProvider</BaseClass>
-     <RequestFilters>*</RequestFilters>
-     <RESTMethod>GET</RESTMethod>
-     <AuthenticationMethod>none</AuthenticationMethod>
-   </HTTPProvider>
+   					<HTTPProvider>
+      					<BaseClass>com.ediap.wowza.MetricaSHDProvider</BaseClass>
+     					<RequestFilters>MetricaSHD*</RequestFilters>
+      					<RESTMethod>GET</RESTMethod>
+      					<AuthenticationMethod>admin-basic</AuthenticationMethod>
+   					</HTTPProvider>
    ```
 
    Si tu VHost no dispone del puerto 8086, revisa la sección `<HostPort>` correspondiente o crea uno nuevo.
