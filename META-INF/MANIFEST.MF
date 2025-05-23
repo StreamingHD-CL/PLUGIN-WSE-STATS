@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.13
+Created-By: 11.0.13+10-LTS-370 (Oracle Corporation)
+Build-Timestamp: 2024-02-04 15:34:52
+Specification-Title: Wowza Streaming Engine
+Specification-Version: 4.8.27+5
+Specification-Vendor: www.wowza.com
+Implementation-Title: Wowza Streaming Engine
+Implementation-Version: 20240402153452
+Implementation-Vendor: www.wowza.com
+
