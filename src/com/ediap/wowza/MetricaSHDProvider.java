@@ -27,6 +27,13 @@ public class MetricaSHDProvider extends HTTPProvider2Base {
 
     @Override
     public void onHTTPRequest(IVHost vhost, IHTTPRequest req, IHTTPResponse resp) {
+        // Verificar autenticación HTTP (basic, digest, etc.) definida en VHost.xml.
+        // Si las credenciales no son válidas Wowza devolverá 401 automáticamente
+        // y no continuaremos procesando la solicitud.
+        if (!doHTTPAuthentication(vhost, req, resp)) {
+            return;
+        }
+
         // Solamente atender GET sin parámetros.
         try {
             JsonObject root = new JsonObject();
